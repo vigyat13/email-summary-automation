@@ -9,10 +9,10 @@ import schedule
 import time
 import getpass
 
-# Setup logging
+
 logging.basicConfig(level=logging.INFO)
 
-# Global variables (they'll be set by user input)
+
 sender_email = ""
 sender_password = ""
 receiver_email = ""
@@ -28,10 +28,10 @@ def fetch_unread_emails(sender_email, sender_password):
 
         emails_info = []
 
-        # Total number of emails
+      
         messages = int(messages[0])
 
-        # Fetch unread emails
+       
         status, response = imap.search(None, '(UNSEEN)')
         unread_msg_nums = response[0].split()
 
@@ -49,7 +49,6 @@ def fetch_unread_emails(sender_email, sender_password):
 
                     from_ = msg.get("From")
 
-                    # Try to get a small snippet (first few lines of the email)
                     body = ""
                     if msg.is_multipart():
                         for part in msg.walk():
@@ -107,7 +106,7 @@ def job():
         logging.warning("No unread emails found.")
         return
 
-    # Prepare HTML email content
+
     email_content = ""
 
     for mail in emails_info:
